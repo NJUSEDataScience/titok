@@ -2,7 +2,8 @@ import json
 from urllib import request
 import csv
 
-musicPath='D:/myMusic'
+musicPath='D:/myMusic' ##用于下载音乐并保存
+dataPath='C:/Users/asus/Desktop/data.json'##获取自动化抓包的数据
 
 
 def getSortKey(elem):
@@ -10,7 +11,6 @@ def getSortKey(elem):
 def writeTxt(item):
     with open('info.txt', 'a', encoding='utf-8')as f:
         f.write("标题：" + item["desc"] + '   ')
-
         f.write("bgmurl：" + str(item["music"]['play_url']['uri']) + '    ')
         f.write("点赞：" + str(item["statistics"]['digg_count']) + '   ')
         f.write("评论数：" + str(item["statistics"]['comment_count']) + '    ')
@@ -32,7 +32,7 @@ def writeCSVByLikes(datas):
 
 
 if __name__ == "__main__":
-    f = open('data.json', 'rb')
+    f = open(dataPath, 'rb')
     res = f.read()
     data = json.loads(res)
     contain = []
