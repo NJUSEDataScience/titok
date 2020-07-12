@@ -5,6 +5,11 @@ import csv
 musicPath='D:/myMusic' ##用于下载音乐并保存
 dataPath='C:/Users/asus/Desktop/data.json'##获取自动化抓包的数据
 
+def cleanFile():
+    with open('info.txt', 'w', encoding='utf-8')as f:
+        f.truncate()
+    with open('sortByLikes.csv', 'w', newline='') as d:
+        d.truncate()
 
 def getSortKey(elem):
     return elem['likesCount']
@@ -32,6 +37,7 @@ def writeCSVByLikes(datas):
 
 
 if __name__ == "__main__":
+    cleanFile()
     f = open(dataPath, 'rb')
     res = f.read()
     data = json.loads(res)
@@ -49,14 +55,7 @@ if __name__ == "__main__":
         like_datas.sort(key=getSortKey)
         contain.append(my_dict)
         contain.sort(key=getSortKey)
+        writeTxt(item)
     writeCSVByLikes(like_datas)
-    print(like_datas)
 
-# {
-#   "platformName": "Android",
-#   "platformVersion": "10",
-#   "udid": "23c9f0689b1e7ece",
-#   "appPackage": "com.ss.android.ugc.aweme",
-#   "appActivity": ".main.MainActivity",
-#   "deviceName": "Samsung"
-#  }
+
