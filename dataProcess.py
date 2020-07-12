@@ -3,7 +3,7 @@ from urllib import request
 import csv
 
 musicPath='D:/myMusic' ##用于下载音乐并保存
-dataPath='C:/Users/asus/Desktop/data.json'##获取自动化抓包的数据
+dataPath='C:/Users/asus/Desktop/data.txt'##获取自动化抓包的数据
 
 def cleanFile():
     with open('info.txt', 'w', encoding='utf-8')as f:
