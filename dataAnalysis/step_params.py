@@ -15,7 +15,8 @@ class container:
 
     def get_randomforest(self):
         return np.array([10, 25, 50, 100, 200, 500])
-
+    def get_music_type(self):
+        return ['*.wav', '*.aif',  '*.aiff', '*.mp3', '*.au', '*.ogg']
 
 
 class feature_reposyitory:

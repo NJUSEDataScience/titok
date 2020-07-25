@@ -3,8 +3,9 @@ import numpy as np
 import pickle as cPickle
 from pyAudioAnalysis import MidTermFeatures as aF
 from pyAudioAnalysis import audioTrainTest as aT
-import step_params
+from dataAnalysis import step_params
 import os
+
 
 def freature_extraction(paths, mid_window, mid_step, short_window, short_step,useage):
     """
@@ -75,8 +76,8 @@ def train_svm(paths, mid_window, mid_step, short_window,
     feature_names = ["features" + str(d + 1) for d in range(n_feats)]
 
     write_modearff_file(model_name, features, class_names, feature_names)
-    # STEP B: classifier Evaluation and Parameter Selection:
-    # get optimal classifeir parameter:
+    # STEP B: classifier Evaluation and Parameter Selection and get optimal classifeir parameter::
+    #
     temp_features = []
     for feat in features:
         temp = []
