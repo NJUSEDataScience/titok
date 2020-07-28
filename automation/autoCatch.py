@@ -7,13 +7,13 @@ class Action():
     def __init__(self):
         #初始化配置，设置Desired Capabilities参数
         self.desired_caps = {
-              "platformName": "Android",
-              "platformVersion": "10",
-              "udid": "23c9f0689b1e7ece",
-              "appPackage": "com.ss.android.ugc.aweme",
-              "appActivity": ".main.MainActivity",
-              "deviceName": "Samsung"
-        }
+  "platformName": "Android",
+  "platformVersion": "10",
+  "deviceName": "23c9f0689b1e7ece",
+  "appPackage": "com.ss.android.ugc.aweme",
+  "appActivity": ".main.MainActivity",
+  "noReset": "true"
+}
         #指定Appium Server
         self.server = 'http://localhost:4723/wd/hub'
         #新建一个Session
