@@ -18,6 +18,11 @@ class container:
     def get_music_type(self):
         return ['*.wav', '*.aif',  '*.aiff', '*.mp3', '*.au', '*.ogg']
 
+    #Features that are related to the beat tracking task:
+    def get_selected_features(self):
+        selected_features = [0, 1, 3, 4, 5, 6, 7, 8, 9, 10,
+                             11, 12, 13, 14, 15, 16, 17, 18]
+
 
 class feature_reposyitory:
     def get_features(self):

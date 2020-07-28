@@ -6,15 +6,15 @@ musicPath='D:/myMusic' ##用于下载音乐并保存
 dataPath='data.json'##获取自动化抓包的数据
 
 def cleanFile():
-    with open('info.txt', 'w', encoding='utf-8')as f:
+    with open('../info.txt', 'w', encoding='utf-8')as f:
         f.truncate()
-    with open('sortByLikes.csv', 'w', newline='') as d:
+    with open('../sortByLikes.csv', 'w', newline='') as d:
         d.truncate()
 
 def getSortKey(elem):
     return elem['likesCount']
 def writeTxt(item):
-    with open('info.txt', 'a', encoding='utf-8')as f:
+    with open('../info.txt', 'a', encoding='utf-8')as f:
         f.write("标题：" + item["desc"] + '   ')
         f.write("bgmurl：" + str(item["music"]['play_url']['uri']) + '    ')
         f.write("点赞：" + str(item["statistics"]['digg_count']) + '   ')
@@ -28,7 +28,7 @@ def downloadMusic(musicName):
 
 def writeCSVByLikes(datas):
     headers=['path','likesCount']
-    with open('sortByLikes.csv', 'w', newline='') as f:
+    with open('../sortByLikes.csv', 'w', newline='') as f:
         # 标头在这里传入，作为第一行数据
         writer = csv.DictWriter(f, headers)
         writer.writeheader()
