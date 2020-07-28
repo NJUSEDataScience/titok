@@ -1,11 +1,14 @@
 
 import matplotlib.pyplot as plt
-import step_params
-import chart_studio.plotly as py
+# import step_params
+# import chart_studio.plotly as py
 from plotly import tools
 from plotly.graph_objs import *
+import numpy as np
 import plotly.express as px
 import pandas as pd
+import pyAudioAnalysis.audioBasicIO as aio
+import pyAudioAnalysis.ShortTermFeatures as short
 import pyAudioAnalysis as audio
 
 def generateFeatures_Single(filePath,visualization_feature_names):
@@ -37,14 +40,12 @@ def generateFeatures_Single(filePath,visualization_feature_names):
 
 def generate_CompareGraph():
 
-    [Fs, x] = audio.audioBasicIO.read_audio_file("F:\\tempFile\pythonWav\people\sample2.mp3")
+    [Fs, x] = audio.audioBasicIO.read_audio_file("/Users/zhouhan/Downloads/河图 - 风起天阑.mp3")
     # 先合并成单声道
-    x = audio.audioBasicIO.stereo_to_mono(x)
+    x = aio.stereo_to_mono(x)
     # F 是n*...的，一行是一个feature
-    F,_= audio.ShortTermFeatures.feature_extraction(x, Fs, 0.50 * Fs, 0.25 * Fs)
-
-
-
+    F,_= short.feature_extraction(x, Fs, 0.50 * Fs, 0.25 * Fs)
+    F = np.transpose(F)
 
     frame=pd.DataFrame(F)
     frame.head()
