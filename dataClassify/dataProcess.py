@@ -87,7 +87,8 @@ if __name__ == "__main__":
     res = f.read()
     data = json.loads(res)
     contain = []
-    likes=[]
+    comment=[]
+    share=[]
     for i in range(0,len(data["res"])):
      temp = data["res"][i]
      for item in temp["aweme_list"]:
@@ -99,7 +100,8 @@ if __name__ == "__main__":
                    'likesCount': item["statistics"]['digg_count'], 'commentsCount': item["statistics"]['comment_count'],
                    'downloadCount': item["statistics"]['download_count'],
                    'forwardCount': item["statistics"]['forward_count'], 'shareCount': item["statistics"]['share_count']}
-        likes.append(item["statistics"]['digg_count'])
+        comment.append(item["statistics"]['comment_count'])
+        share.append(item["statistics"]['share_count'])
         contain.append(my_dict)
         contain.sort(key=getSortKey)
         writeTxt(item)
